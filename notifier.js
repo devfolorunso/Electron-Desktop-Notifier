@@ -3,11 +3,11 @@ const path = require('path')
 const open = require('open')
 
 module.exports = {
-    run(){
+    run(message){
             notifier.notify(
             {
                 title: 'Attendance Reminder',
-                message: 'Hey Geek! Have you signed your attendance today?',
+                message: message,
                 icon: path.join(__dirname, 'fofx.png'),
                 sound: true,
                 wait: true, 
