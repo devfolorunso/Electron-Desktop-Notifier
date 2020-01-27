@@ -1,0 +1,8 @@
+{
+  "startTime": "09:00",
+  "endTime": "12:00",
+  "endPoint": "https://cms.fofxacademy.com/api/checkAttendance?system_ip=",
+  "cmsURL": "https://cms.fofxacademy.com",
+  "notificationIcon": "./assets/fofx.png",
+  "popUpInterval": "6000"
+}
