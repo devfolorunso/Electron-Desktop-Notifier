@@ -1,0 +1,39 @@
+﻿<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="*" Name="fofxacademy-notifier-app Machine-Wide Installer" Language="1033" Version="!(bind.FileVersion.fofxacademy-notifier-app.exe)" UpgradeCode="278f7b39-67fb-50dd-9548-d8e67dbdfad4" Manufacturer="dipoleDiamond LTD">
+
+    <Package Description="#Description" Comments="Comments" InstallerVersion="200" Compressed="yes"/>
+		<Media Id="1" Cabinet="contents.cab" EmbedCab="yes" CompressionLevel="high"/>
+
+    <PropertyRef Id="NETFRAMEWORK45" />
+
+    <Condition Message="This application requires .NET Framework 4.5 or higher. Please install the latest .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK45]]>
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="fofxacademy-notifier-app Installer" />
+      </Directory>
+    </Directory>
+
+    <DirectoryRef Id="APPLICATIONROOTDIRECTORY">
+      <Component Id="fofxacademy-notifier-app.exe" Guid="7bcf387b-d355-582b-8a10-976c8735663c">
+        <File Id="fofxacademy-notifier-app.exe" Name="fofxacademy-notifier-app.exe" Source="./Setup.exe" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegistryEntries" Guid="5b2d5e26-cede-5878-960c-4953b9ab99a9">
+        <RegistryKey Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run">
+          <RegistryValue Type="expandable" Name="fofxacademy-notifier-appMachineInstaller" Value="%ProgramFiles%\fofxacademy-notifier-app Installer\fofxacademy-notifier-app.exe --checkInstall" />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="MainApplication" Title="Main Application" Level="1">
+      <ComponentRef Id="fofxacademy-notifier-app.exe" />
+      <ComponentRef Id="RegistryEntries" />
+    </Feature>
+  </Product>
+</Wix>
+
