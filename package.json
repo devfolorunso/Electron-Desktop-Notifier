@@ -8,7 +8,7 @@
     },
     "author": "dipoleDiamond LTD",
     "devDependencies": {
-        "electron": "^7.1.9"
+        "electron": "^13.6.6"
     },
     "dependencies": {
         "axios": "^0.19.2",
